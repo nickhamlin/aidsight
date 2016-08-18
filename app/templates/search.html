@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block head_pre_custom %}
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/d3/d3.min.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block head_post_custom %}
+	<link href="/static/css/search.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+	<section class="header search_header">
+		<div id="search-form" class="col-xs-12 col-md-6 text-vertical-center">
+			<h2>Search for Collaborators</h2>
+
+			{% block search_help %}
+				<p>AidSight supports 3 kinds of searches:</p>
+
+				<p>[AID SECTOR]<br/><strong>water</strong></p>
+				<p>[AID SECTOR] in [LOCATION]<br/><strong>water</strong> in <strong>Ghana</strong></p>
+				<p>[AID SECTOR] with [ORGANIZATION]<br/><strong>water</strong> with <strong>GlobalGiving</strong></p>
+			{% endblock %}
+
+			<form action="{{ url_for('search') }}" method="get" name="search">
+				<fieldset class="form-group">
+					{{ form.query(size=40, class='form-control') }}
+				</fieldset>
+
+				<input type="submit" value="Search">
+			</form>
+
+			{% block results_count %}
+			{% endblock %}
+
+		</div>
+
+		<div id="search-graph-container" class="col-xs-12 col-md-6">
+		</div>
+	</section>
+
+	<div class="tooltip">&nbsp;</div>
+
+	<div id="search-results">
+		{% block search_results %}
+		{% endblock %}
+	</div>
+
+	<!-- Based on the example at https://bl.ocks.org/mbostock/4062045 -->
+	<!-- Also adapts the example at http://bl.ocks.org/mbostock/1129492 -->
+
+	<script language="Javascript">
+		{% block search_graph_json %}
+
+		var graph = { nodes: [], edges: [] };
+
+		{% endblock %}
+	</script>
+
+	<script src="/static/js/search.js"></script>
+
+{% endblock %}

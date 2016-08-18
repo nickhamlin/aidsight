@@ -1,0 +1,378 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <!-- Header -->
+    <header class="header index_header">
+      <div class="text-vertical-center">
+          <h1>AidSight</h1>
+          <h3>Turning Aid Data into Insight</h3>
+          <a href="/search" class="btn btn-primary btn-lg start_button">Get Started</a>
+          <a href="#about" class="btn btn-primary btn-lg start_button">Learn More</a>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Understanding what's really going on with international aid is complex. AidSight makes it simpler.</h2>
+                    <p class="lead">We combine data from the <a href='http://www.iatiregistry.org/'>International Aid Transparency Initiative </a>
+                      (IATI) with machine learning and data science techniques to allow aid professionals to focus less on navigating messy data and
+                      more on making the world a better place.
+                    </p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Problem Statement -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7">
+                    <h1>The Challenge</h1>
+                    <p class="lead">
+                      <b>Meet Sarah</b>. She's working to improve access to fresh water in her community in West Africa.</p>
+                    <p class="lead"><strong>
+                      How can she find the information she needs to create the best strategy for expanding her programs to Ghana?
+                    </strong>
+                    </p>
+
+                    <p class="lead">
+                      Web searches aren't precise enough and <a href="https://www.google.com/search?q=water+projects+in+ghana&oq=water+projects+in+ghana">give her ads rather than answers</a>.
+                      Other aid data sources are either <a href="http://datastore.iatistandard.org/query/">too complex<a>, <a href="http://maps.foundationcenter.org/pricing.php">too expensive</a>, or <a href="http://opendevtoolkit.net/en-US/tools/">just plain broken.</a>
+                    </p>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="tools" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>How AidSight Helps</h2>
+                    <p class="lead">AidSight can answer Sarah's question in three easy steps</p>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-search fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Step 1: Search</strong>
+                                </h4>
+                                <p>Look for collaborators by name, location, or program</p>
+                                <a href="#search2" class="btn btn-light">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-sitemap fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Step 2: Explore</strong>
+                                </h4>
+                                <p>Follow connections between key funders, implementers, and leaders in the field</p>
+                                <a href="#graph" class="btn btn-light">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-bar-chart fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Step 3: Validate</strong>
+                                </h4>
+                                <p>See how reliable an organization's data will be at a glance. No statistician needed!</p>
+                                <a href="#quality" class="btn btn-light">Learn More</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+    <!-- STEP 1  -->
+    <section id="search2" class="search bg-secondary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-6">
+                  <h1>
+                      Search
+                    </h1>
+                    <p class="lead text-left">
+                      <b>Which organizations are already working to improve water systems
+                      in Ghana?</b>
+                    </p>
+
+                    <p class="lead text-left">
+                      Sarah can examine data reported by over 500,000 development projects
+                      around the world to find people who are working on the same problems she cares about.
+                      But, unlike other tools that can access these datasets, she doesn't have to <a href="http://datastore.iatistandard.org/query/">
+                      build complicated queries</a> or read through <a href="http://www.openaidsearch.org/?order_by=-total_budget">
+                      endless lists of choices</a> to find what she needs.
+                    </p>
+
+                    <a href="/search" class="btn btn-primary btn-lg">Search Now</a>
+                    <!-- /.row (nested) -->
+                </div>
+
+                <div class="col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-1 search_column">
+                  <p>
+                  <i class="fa fa-search fa-4x text-primary"></i><h1><i>I'm interested in...</i></h1>
+                </p>
+                  <div class="search_animate">
+                <p>Clean water access in Ghana<span>|</span></p>
+              </div>
+            </div>
+
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- STEP 2  -->
+    <section id="graph" class="graph">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-8 col-md-6">
+                  <img id="main_page_graph" class="img-responsive" src="/static/img/index_graph.png"/>
+                </div>
+                <div class="col-sm-12 col-md-5">
+                  <h1>Explore</h1>
+                  <p class="lead ">
+                    <b>How are the organizations I care about connected with each other?</b>
+                  </p>
+
+                  <p class="lead text-justify">
+                    Sarah can't find the best growth strategy without having a clear understanding of the funding,
+                    implementation, and collaborative relationships between the development organizations
+                    operating in her area of interest. AidSight's network map turns the aid sector's messy data
+                    into a visual tool to explore these relationships without a single line of code.
+                  </p>
+
+                  <a href="/search?query=water+in+Ghana" class="btn btn-primary btn-lg">See Sarah's Results</a>
+
+
+                </div>
+
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- STEP 3  -->
+    <section id="quality" class="quality bg-secondary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <h1>Validate</h1>
+
+                    <p class="lead text-left">
+                      <b>How much can I trust the data that each organization provides?</b>
+                    </p>
+
+                    <p class="lead text-left">
+                      Even though there are <a href="http://iatistandard.org/">standards in place</a>
+                      to describe how aid organizations should report data about their work,
+                      in practice interpretations of these best practices vary widely. As a result, practitioners
+                      like have to read through pages of data and make their best guess about whether or not
+                      they can rely on what they're seeing.
+                    </p>
+                    <!-- /.row (nested) -->
+                </div>
+
+                <div class="col-md-5">
+                  <div id="benchmark_histogram"></div>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="lead text-left">
+                    AidSight solves this problem with a new framework for evaluating the reliability
+                    of an organization's data.  We've identified where important information
+                    is missing, numbers that may be fabricated, and places where useful data is hidden
+                    among pages of filler.  All of this is rolled up into an simple letter
+                    grade that Sarah can interepret at a glance.
+                  </p>
+
+                  <p class="lead text-left">
+                    In places where data is missing or incomplete, AidSight also explores the network of related
+                    organizations and, where possible, directs users to possible replacement data sources.
+                    This approach gives Sarah the best possible opportunity to optimize her expansion strategy,
+                    even if the organizations she's researching haven't provided all the data she'd like.
+                  </p>
+
+                    <a href="/quality?org=NL-KVK-51018586" class="btn btn-primary btn-lg">See an example dashboard</a>
+                </div>
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- WHO CARES  -->
+    <section id="value" class="value bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-7 col-md-offset-1">
+                    <h1>The Result</h1>
+                    <p class="lead">
+                      Thanks to AidSight, Sarah has...
+                    </p>
+                    <ul class="lead text-left fa-ul">
+                      <li><i class="fa-li fa fa-check-square"></i><b>Searched</b> for and found possible collaborators for her new water project</li>
+                      <li><i class="fa-li fa fa-check-square"></i><b>Explored</b> and identified the connections between these organizations</li>
+                      <li><i class="fa-li fa fa-check-square"></i><b>Validated</b> and understood the details of these programs without worrying about incomplete or unreliable data</li>
+                    </ul>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+
+            <div class="row text-center">
+              <div class="col-md-10 col-md-offset-1 lead">
+                <br>
+                <p><b>Now, she can reinvest all the time and effort saved by using AidSight into actually carrying
+                out her projects and bringing clean water to the communities that need it</b></p>
+                <a href="/search" class="btn btn-primary btn-lg">Try it yourself</a>
+              </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+    <!-- Team -->
+    <section id="team" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>The AidSight Team</h2>
+                    <hr class="small">
+                    <div class="row">
+
+                        <!-- NATARAJAN -->
+                        <div class="col-md-3">
+                            <div class="portfolio-item img-portfolio">
+                                  <img class="img-responsive" src="static/img/natarajan.png">
+                                <div class="portfolio-alt bio">
+                                  <p>
+                                    <a href="mailto:nk@ischool.berkeley.edu"><i class="fa fa-envelope-o fa-fw fa-4x"></i></a>
+                                    <a href="https://www.linkedin.com/in/nkrishnaswami"><i class="fa fa-linkedin fa-fw fa-4x"></i></a>
+
+                                  </p>
+                                  <p>
+                                  <a href="https://github.com/nkrishnaswami"><i class="fa fa-github fa-fw fa-4x"></i></a>
+                                  </p>
+                              </div>
+                            </div>
+                            <h4><strong>Natarajan Krishnaswami</strong></h4>
+                        </div>
+
+                        <!-- NICK -->
+                        <div class="col-md-3">
+                            <div class="portfolio-item img-portfolio">
+                                  <img class="img-responsive" src="static/img/nick.png">
+                                <div class="portfolio-alt bio">
+                                  <p>
+                                    <a href="mailto:nhamlin@ischool.berkeley.edu"><i class="fa fa-envelope-o fa-fw fa-4x"></i></a>
+                                    <a href="https://www.linkedin.com/in/nickhamlin"><i class="fa fa-linkedin fa-fw fa-4x"></i></a>
+
+                                  </p>
+                                  <p>
+                                  <a href="https://twitter.com/nicholashamlin"><i class="fa fa-twitter fa-fw fa-4x"></i></a>
+                                  <a href="https://github.com/nickhamlin"><i class="fa fa-github fa-fw fa-4x"></i></a>
+                                  </p>
+                              </div>
+                            </div>
+                            <h4><strong>Nick Hamlin</strong></h4>
+                        </div>
+
+                        <!-- MINHCHAU -->
+                        <div class="col-md-3">
+                            <div class="portfolio-item img-portfolio">
+                                  <img class="img-responsive" src="static/img/minchau.png">
+                                <div class="portfolio-alt bio">
+                                  <p>
+                                    <a href="mailto:minhchau.dang@berkeley.edu"><i class="fa fa-envelope-o fa-fw fa-4x"></i></a>
+                                    <a href="https://www.linkedin.com/in/holatuwol"><i class="fa fa-linkedin fa-fw fa-4x"></i></a>
+
+                                  </p>
+                                  <p>
+                                  <a href="https://github.com/holatuwol"><i class="fa fa-github fa-fw fa-4x"></i></a>
+
+                                  </p>
+                              </div>
+                            </div>
+                            <h4><strong>Minhchau Dang</strong></h4>
+                        </div>
+
+                        <!-- TED -->
+                        <div class="col-md-3">
+                            <div class="portfolio-item img-portfolio">
+                                  <img class="img-responsive" src="static/img/ted.png">
+                                <div class="portfolio-alt bio">
+                                  <p>
+                                    <a href="mailto:dunmireg@ischool.berkeley.edu"><i class="fa fa-envelope-o fa-fw fa-4x"></i></a>
+                                    <a href="https://www.linkedin.com/in/glenn-ted-dunmire"><i class="fa fa-linkedin fa-fw fa-4x"></i></a>
+
+                                  </p>
+                                  <p>
+                                  <a href="https://github.com/dunmireg"><i class="fa fa-github fa-fw fa-4x"></i></a>
+
+                                  </p>
+                              </div>
+                            </div>
+                            <h4><strong>Glenn "Ted" Dunmire</strong></h4>
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- For reasons that are dumb, the force layout on this page requires d3v4,
+    while the bar chart requires v3.  For the sake of time, we'll load both, but
+    eventually we should consolidate everything to v4-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js" language="JavaScript"> </script>
+    <script src="static/js/index.js" language="JavaScript"></script>
+
+{% endblock %}

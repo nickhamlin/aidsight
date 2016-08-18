@@ -1,0 +1,41 @@
+{% extends "search.html" %}
+
+{% block results_count %}
+
+	<br /><br />
+
+	<p>{{ results['nodes']|length }} organizations matched</p>
+
+	{% if results['nodes']|length > 0 %}
+		<p><a href="#search-graph-container">scroll to results graph</a></p>
+		<p><a href="#search-results">scroll to results table</a></p>
+	{% endif %}
+
+{% endblock %}
+
+{% block search_results %}
+
+	{% if results['nodes']|length > 0 %}
+
+		<div id="search-results-description" class="filtered-only">
+		</div>
+
+		<a href="javascript:void(jQuery('#search-results').removeClass('filtered'));" class="filtered-only">click to show everything</a>
+
+		<table>
+			<tr>
+				<th>Machine ID</th>
+				<th>Data Available</th>
+				<th>Alternate Names</th>
+			</tr>
+		</table>
+
+	{% endif %}
+
+{% endblock %}
+
+{% block search_graph_json %}
+
+var graph = {{results|tojson|safe}};
+
+{% endblock %}

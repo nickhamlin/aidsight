@@ -1,0 +1,410 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <header class="header infrastructure_header">
+    <div class="text-vertical-center">
+        <h1>Building AidSight</h1>
+        <h3>Implementation and Infrastructure Details </h3>
+        <a href="#about" class="btn btn-primary btn-lg">Find Out More</a>
+    </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Design Philosophy</h2>
+                    <p class="lead text-justify">
+                      International development workers have a wide range of skills and interests.  We believe they <b> should not also have to become experts in ETL and data science</b> to reap the benefits of the universe of available of aid datasets.  IATI data sets in particular contain a great deal of valuable program information, and <b>our aim is to present and characterize the data in ways that facilitate its use real-world programs</b>. With this goal in mind, we've sought to
+                      structure our implementation towards <b>clarity and accessibility</b> for the end
+                      user and <b>without duplicating the work</b> of other available tools in the sector.
+
+                    </p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Problem Statement -->
+    <section id="tech" class="about bg-tertiary">
+        <div class="container">
+            <div class="row text-center">
+              <h1>Core Technology</h1>
+              <div class="col-md-3 col-sm-6">
+                  <div class="service-item">
+                      <img class="tool" src="http://slamdata.com/wp-content/uploads/2015/10/mongodb-logo-png-just-icon.png"/>
+                  </span>
+                      <h4>
+                          <strong>MongoDB</strong>
+                      </h4>
+                      <p>Provides scalable and flexible storage for unstructured data</p>
+                  </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                    <img class="tool" src="http://info.neo4j.com/rs/773-GON-065/images/neo4j_logo_globe.png"/>
+                </span>
+                    <h4>
+                        <strong>Neo4J</strong>
+                    </h4>
+                    <p>Graph-specific data store for easy analysis and display of organization network.  Used during EDA but not final implementation.</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                    <img class="tool" src="static/img/pandas.png"/>
+                </span>
+                    <h4>
+                        <strong>Pandas</strong>
+                    </h4>
+                    <p>For data cleansing and implementation of data quality scoring algorithm</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                    <img class="tool" src="https://avatars2.githubusercontent.com/u/365630?v=3&s=400"/>
+                </span>
+                    <h4>
+                        <strong>Scikit-Learn</strong>
+                    </h4>
+                    <p>Powers nearest-neighbor analysis and text similarity elements of quality scoring process</p>
+                </div>
+              </div>
+
+            </div>
+
+              <div class="row text-center">
+
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                    <img class="tool" src="https://cdn2.iconfinder.com/data/icons/amazon-aws-stencils/100/Compute__Networking_copy_Amazon_EC2---128.png"/>
+                </span>
+                    <h4>
+                        <strong>Amazon EC2</strong>
+                    </h4>
+                    <p>Virtual machines for quick prototyping and production hosting</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                    <img class="tool" src="http://flask.pocoo.org/docs/0.11/_static/flask.png"/>
+                </span>
+                    <h4>
+                        <strong>Flask</strong>
+                    </h4>
+                    <p>Lightweight web framework to support API access to back-end data</p>
+                </div>
+              </div>
+                <!-- /.col-lg-10 -->
+
+            <div class="col-md-3 col-sm-6">
+              <div class="service-item">
+                  <img class="tool" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Boostrap_logo.svg/2000px-Boostrap_logo.svg.png"/>
+              </span>
+                  <h4>
+                      <strong>Bootstrap</strong>
+                  </h4>
+                  <p>Front-end framework for agile site implementation</p>
+              </div>
+            </div>
+
+
+              <div class="col-md-3 col-sm-6">
+                  <div class="service-item">
+                      <img class="tool" src="https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Logo_D3.svg/1079px-Logo_D3.svg.png"/>
+                  </span>
+                      <h4>
+                          <strong>D3</strong>
+                      </h4>
+                      <p>Enables flexible and customized interactive visualizations, especially on quality dashboard</p>
+                  </div>
+              </div>
+
+            </div>
+            <!-- /.row -->
+                <!-- /.col-lg-10 -->
+            </div>
+
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Data Pipeline -->
+    <section id="timeline" >
+        <div class="container timeline_section">
+            <div class="row">
+                <div class="col-lg-12 text-center about">
+                    <h2>Data Pipeline</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/xml_example.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Data Ingest</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Our first step is to compile copies of all the raw XML files
+                                      generated by all organizations reporting data about their programs to the IATI standard.
+                                      These datasets are not hosted in one central location, but rather individually by each
+                                      organization.  Using pointers available from the IATI website, we crawl the list of
+                                      reporting organization sites, download their XML dataset, and save the raw files to S3 buckets.
+                                      IATI data is available at the organization level, activity (project) level, and metadata level.
+                                      Since we aren't sure what will be most useful at this stage, we download everything.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://static.tumblr.com/lbtm3t2/8PAn0kziu/mongodb-logo.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Initial Storage and Cleaning</h4>
+                                </div>
+                                <div class="timeline-body">
+                                  <p class="text-muted">To make the raw data easier to work with, we convert the raw XML into JSON
+                                  format and load them into MongoDB collections - one for organizations and one for activities. NoSQL
+                                  data storage works especially well for this content, because it can support the significant variations
+                                  in structure that are present in the IATI data. As part of this process, we identify any records
+                                  that fail basic validations, like forming invalid JSONs or containing no data entirely. We also add
+                                  indices and apply formatting to a few fields to make future queries easier.
+
+                                  </address>
+                                </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/bar_example.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Exploratory Data Analysis</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Our initial EDA involves the calculation of simple summary statistics
+                                      about activities. At this stage, we also know we're going to need a way of calculating similarity
+                                      between organizations.  With that in mind, we extract the text of each activity and build a simple
+                                      bag-of-words model that enables us to calculate distance between documents using cosine similarity.
+                                      In addition, we make a significant time investment in generating clean and deduplicated organization
+                                    identifiers, since these will be critical for building the organization graph and creating a clean user
+                                  experience in our final product.</p>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="timeline-inverted">
+
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/graph.png" height=150px alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Feature Generation</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Now that we have a more detailed understanding of the contents of our
+                                    dataset, we can generate both data quality and organization graph features. Quality features
+                                  focus on the completeness of the data, the size balance between the different types of data
+                                  an organization reports, and the extent to which the digits included in the data adhere to
+                                  <a href="http://mathworld.wolfram.com/BenfordsLaw.html">Benford's Law</a>.  For the graph,
+                                  we create edges where one organization's reported data mentions another, using the cleaned
+                                  organization identifiers created during our EDA.  Given the unique structure of graph data,
+                                  we initially store our graph results in Neo4J instead of the MongoDB collections that contain the rest of
+                                  the data. Later, we store graph data in memory for improved
+                                  site responsiveness. <!--a href="#graph_infrastructure">Find our more about the graph creation process</a-->
+                                </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/grade_example.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Model creation and tuning</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                      With features in place, we can now build models for our data quality
+                                    Scores between 0 and 100 are first calculated for completeness, compliance, and utility.
+                                    These three subscores are then combined together by calculating the Euclidean distance
+                                    from a perfect overall score of 100. We've chosen this method of subscore aggregation because
+                                    a similar approach is used by the popular nonprofit rating site <a href="http://www.charitynavigator.org/index.cfm?bay=content.view&cpid=1287">Charity Navigator</a>.
+                                    As a result, aid professionals are familiar with frameworks like this. This maximizes our product's usability
+                                    among our target audience. The final 0-100 score is converted to a letter grade using
+                                    the same approach typically used in academia, again for ease-of-use reasons.
+                                    <a href="#quality_infrastructure">Read more about our scoring algorithm</a>.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/optimization_example.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">Optimization</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">As we add new features and debug old ones, we consistently revisit
+                                    our scoring algorithm to ensure that it's staying in balance.  For example, we need <tbody>
+                                      reconsider any change that adds sigificant skewness to the score distribution.  During <thead>
+                                        optimization stage we also bring together the quality scoring algorithm and the relationships
+                                        captured in the graph database.  In situations where an organization has missing or incomplete
+                                        data, we examine its neighbors in the graph.  If a neighbor meets similarity thresholds, we
+                                        attempt to impute the missing data where it exists.  This approach is similar to a
+                                        weighted vote relational neighbor classifier.
+                                      </thead>
+                                    </tbody></p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="static/img/ux_example.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">UX and Visualization</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Once all of our underlying models are created, we create a flexible
+                                    front-end to enable users to interact with them directly.  It's critical that our tools
+                                    are intuitive and easy-to-use for busy aid practitioners who likely don't have a sophisticated
+                                    data background or the time to grapple with complex user interfaces.  With this in mind, we
+                                    strive to make the initial presentation of data simple, with the option to explore more deeply
+                                    via modal popups and tooltips should users want more detail.  Throughout this iterative development
+                                    process, we rely on feedback from real aid professionals. <a href="https://chewychunks.wordpress.com/"> Mark Maxmeister</a>, Chief Innovation
+                                    Officer at <a href="http://www.keystoneaccountability.org/"> Keystone Accountability</a>, graciously volunteers to serve as our primary UX reviewer and provides valuable
+                                    input on how to make AidSight as practically useful as possible.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details of graph implementation ->
+    <section id="graph_infrastructure" class="graph_infrastructure ">
+        <div class="container">
+          <h1 class="text-center">Understanding the network of aid organizations</h1>
+            <div class="row text-justify">
+
+              <p class="lead">
+                International Development ipsum dolor amet theory of change outcomes dumb phones, hazard pay treatment grants panacea financial inclusion measurable accountability local. Equality USAID donor, measurable hazard pay disease sustainable gender poor GIZ data DFID Africa last mile outcomes. Dumb phones Bank last mile data local inequality UNCDF Foundation equality theory of change humanitarian donation control financial inclusion. Poverty panacea smart phones, WEF malaria glocal fragile states. Volunteer WEF donation, hazard pay inclusive growth mobile ebola fragile states control outcomes smart phones causal financial inclusion. Grants Foundation local children on the ground UN.
+              </p>
+
+              <p class="lead">
+                Qualitative DFID NGO, Africa diplomat accountability donor poverty volunteer scalable Bank hazard pay. Smart phones field work performance indicator DFID data humanitarian fragile states inequality hazard pay equity donor diplomat measurable control UN. Field work volunteer performance indicator, qualitative donation youth grand challenge ICT4D sustainable UN children international development. Sustainable scalable civil society mobile last mile donor. USAID measurable theory of change, panacea SDG control on the ground dumb phones youth equality disease. USAID Africa dumb phones diplomat. International development UN data intermediate outcome control Foundation DFID theory of change qualitative.
+
+              </p>
+            </div>
+        </div>
+    </section -->
+
+    <!-- Details of Quality implementation -->
+    <section id="graph_infrastructure" class="graph_infrastructure ">
+        <div class="container">
+          <h1 class="text-center">Operationalizing "data quality"</h1>
+            <div class="row text-justify">
+
+              <p class="lead">
+                Getting the measures of data quality correct was a major data science challenge for us in this project.  While there are a small handful of other IATI-driven sites that briefly mention data quality in passing, it's always an afterthought.  As a result, there is no set of precedents or best practices that we can rely on.  Rather, we've made our design choices here based on domain expertise and practitioner feedback.
+              </p>
+
+              <p class="lead">
+                Our approach to operationalizing data quality was to pick a set of starting features, build a simple baseline model to generate distributions, then tune the model iteratively.  As we added new features, the underlying distribution would shift, sometimes dramatically, leading us to have to "rebalance" our system of calculating scores.  Implementing the score creation pipeline as a series of discrete steps packaged in a Jupyter notebook enables rapid iteration and would support the inclusion of additional quality features and metrics in the future.
+              </p>
+
+              <p class="lead">
+                We welcome additional ideas and feedback on our methodology for creating data quality scores and grades.  Rather than duplicating the detailed walkthrough of the process in full here, <a href="https://github.com/nickhamlin/aidsight/blob/master/eda/calculate_scores.ipynb" style="color:orange">we invite you to explore the score calculation specifics on Github.</a>
+              </p>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Next Steps-->
+    <section id="next-steps" class="quality bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <h1>Next Steps</h1>
+                    <p class="lead text-justify">
+                      This first iteration of AidSight represents a minimum viable product aimed at understanding the validity of the concept, the potential demand among our presumed user base, and the challenges associated with practical uses of aid sector data.</p>
+
+                      <p class="lead text-justify"> While we've had success in tackling these primary goals, we've prioritized our ability to do efficient EDA and pivot our implementation choices, particularly in the first stages of the data pipeline.  As a result, there are plenty of opportunities for additional improvements and updates that would continue to grow the impact that AidSight has in the community. Specific enhancements we are investigating include:
+                    </p>
+                    <!-- /.row (nested) -->
+                </div>
+
+                <div class="col-md-6">
+                    <p class="lead">
+                      <ul class="lead text-left">
+                        <li>Further automation of the data pipeline</li>
+                        <li>Adding the ability to poll and automatically ingest newly published IATI data sets as they're released</li>
+                        <li>Additional quality metrics with more details available for drilldown</li>
+                        <li>Enhanced imputation of quality data based on a more nuanced description of the relationship between organizations and with a focus beyond just missing data</li>
+                        <li>Expanded organization graph to better account for those who don't report IATI data directly</li>
+                        <li>Additional interactivity and functionality on the organization graph visualization</li>
+                        <li>Increased use of natural language processing on search queries</li>
+                        <li>Greater diversity and breadth of feedback gathered from prospective aid practitioner users</li>
+
+                      </ul>
+                    </p>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Share and Extend -->
+    <section id="problem" class="code">
+        <div class="container">
+            <div class="row text-center code-text">
+              <h1>Still want more details?</h1>
+              <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://github.com/nickhamlin/aidsight'">
+                View full source code on Github</button>
+
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+
+{% endblock %}

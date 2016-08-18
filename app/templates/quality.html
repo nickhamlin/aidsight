@@ -1,0 +1,328 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- D3 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+
+<script src="static/js/liquidFillGauge.js" language="JavaScript"></script>
+<script src="static/js/quality.js"></script>
+
+    <!-- Header -->
+    <section id="dashboard" class="dashboard_title">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-11">
+                  <h1>Showing Quality for:<b> {{record.organization_name}}</b></h1>
+                  <p>IATI Organization ID: {{record.organization_id}}</p>
+              </div>
+          </div> <!-- /.row -->
+
+      </div> <!-- /.container -->
+    </section>
+
+    <!-- Dashboard Body -->
+    <section id="dashboard_body">
+     <div class="container">
+        <div class="row">
+
+    <!-- Overall Score -->
+      <div class="col-md-5 ">
+          <h1>Overall Grade</h1>
+          <div class='row letter_grade_text'>
+              <div class=col-md-9>
+            <h1><strong>{% block grade %}{{record.grade}}{%endblock%}</strong></h1>
+            </div>
+        </div>
+            <div class="row">
+                <div class='col-md-6'>
+            <h4 class=text-left> <a href="#" data-toggle="modal" data-target="#methodModal">
+                  How is this calculated?
+                </a>
+              </h4>
+              <h4> <a href='{{record.iati_url}}' target='_blank'>
+                    Get raw data
+                  </a>
+                </h4>
+            <h4 class=text-left> <a href="#" data-toggle="modal" data-target="#imputeModal">
+                  Can I improve this data?
+                </a>
+              </h4>
+          </div>
+
+              <div class='col-md-6'>
+            <ul class="text-left dash_list">
+              <li>Overall Score: <strong>{{record.distance}}/100</strong></li>
+              <li>Number of Records: <strong>{{record.records}}</strong></li>
+              <li>Avg. Record Size: <strong>{{record.doc_size_avg}}</strong></li>
+            </ul>
+          </div>
+
+        </div>
+          </div>
+
+      <div class="col-md-7">
+          <h1>Benchmarks</h1>
+            <div id='benchmark_histogram'>
+              <p>This organization has higher quality data than
+                <b>{{record.percentile_rank}}% </b>
+                of all reporting organizations</p>
+            </div>
+      </div>
+
+    </div>
+
+  <!-- BOTTOM ROW -->
+    <div class="row">
+
+          <!-- completeness Column -->
+        <div class="col-md-3">
+
+        <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2 gauge">
+                <svg id="fillgauge1" width="40" height="40" onclick="gauge1.update(NewValue());"></svg>
+                <script language="JavaScript">
+                  var tooltiptext = "The completeness score is based on whether or not core project descriptors are included in the activity data reported by the organization."
+
+                  var config1 = liquidFillGaugeDefaultSettings();
+                  var gauge1 = loadLiquidFillGauge("fillgauge1", {{record.completeness}}, config1, tooltiptext);
+                  //var gauge1 = loadLiquidFillGauge("fillgauge1", 100, config1);
+
+                </script>
+              </div>
+
+              <div class="col-md-10 col-sm-10 col-xs-10 subscore_text">
+              <h1>Completeness</h1>
+            </div>
+
+        </div>
+
+          <!-- Content  -->
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-5">
+              <ul class="no_bullet_list">
+                <li>Title</li>
+                <li>Description</li>
+                <li>Budget</li>
+                <li>Transactions</li>
+                <li>Results</li>
+                <li>Dates</li>
+                <li>Language</li>
+                <li>Currency</li>
+                <li>Documentation</li>
+
+              </ul>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <ul class="no_bullet_list">
+              <li>{{record.missing_data_title}}%</li>
+              <li>{{record.missing_data_description}}%</li>
+              <li>{{record.missing_data_budget}}%</li>
+              <li>{{record.missing_data_transaction}}% </li>
+              <li>{{record.missing_data_result}}%</li>
+              <li>{{record.missing_data_activity_date}}%</li>
+              <li>{{record.missing_data_language}}%</li>
+              <li>{{record.missing_data_currency}}%</li>
+              <li>{{record.missing_data_document_link}}%</li>
+
+            </ul>
+        </div>
+        </div>
+    </div> <!-- end first column -->
+
+
+<!-- compliance column -->
+        <div class="col-md-3">
+
+            <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-2 gauge">
+              <svg id="fillgauge2" width="40" height="40" onclick="gauge2.update(NewValue());"></svg>
+              <script language="JavaScript">
+                var tooltiptext = "The compliance score shows how closely the numbers reported by an organization follow <a href='https://en.wikipedia.org/wiki/Benford%27s_law'>Benford's Law</a>, a phenomenon which describes the distribution of leading digits in real-world datasets"
+                var config2 = liquidFillGaugeDefaultSettings();
+                var gauge2 = loadLiquidFillGauge("fillgauge2", {{record.compliance}}, config2, tooltiptext);
+
+              </script>
+            </div>
+
+            <div class="col-md-10 col-sm-10 col-xs-2 subscore_text">
+            <h1>Compliance</h1>
+          </div>
+          </div>
+
+        <div class="row">
+              <!-- Content  -->
+                <div class="col-md-12 col-xs-12">
+                    <div id='compliance_chart'>
+                      <div class="btn-group-justified btn-small" data-toggle="buttons">
+                      <label class="btn btn-dark active">
+                        <input type="radio" value="budget" name="benford" onchange='updateData(value)'> Budgets
+                      </label>
+                      <label class="btn btn-dark ">
+                        <input type="radio" value="transaction" name="benford" onchange='updateData(value)'> Transactions
+                      </label>
+                    </div>
+                      <div id='compliance_caption'></div>
+                    </div>
+              </div>
+              <div>
+              <p id='compliance_label' class='text-center xlabel'></p>
+          </div>
+        </div>
+    </div> <!-- end compliance column -->
+
+  <!-- Utility -->
+    <div class="col-md-3">
+
+        <div class="row">
+
+        <div class="col-md-2 col-sm-2 col-xs-2 gauge">
+          <svg id="fillgauge3" width="40" height="40" onclick="gauge3.update(NewValue());"></svg>
+          <script language="JavaScript">
+            var tooltiptext = "The utility score is based on the diversity of the data than an organization reports and whether or not that data is internally consistent"
+            var config3 = liquidFillGaugeDefaultSettings();
+            var gauge3 = loadLiquidFillGauge("fillgauge3", {{record.utility}}, config3,tooltiptext);
+          </script>
+        </div>
+
+        <div class="col-md-10 col-sm-10 col-xs-10 subscore_text">
+          <h1>Utility</h1>
+        </div>
+    </div>
+
+      <!-- Content  -->
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div id="waffle">
+        </div>
+      </div>
+      </div>
+
+    </div>  <!-- end utility column -->
+
+  </div> <!-- end bottom row -->
+   </div> <!-- /.container -->
+    </section>
+
+
+    <!-- METHOD MODAL -->
+    <div id="methodModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="methodModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <!-- MODAL HEADER -->
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h2 class="text-center"><br>How are quality grades calculated?</h2>
+              </div>
+
+              <!-- MODAL BODY -->
+              <div class="modal-body row">
+                <div class="col-md-10 col-md-offset-1">
+                  <p>
+                    Grades for each organization measure the data quality in terms
+                    of completeness, compliance, and utility.  These three subscores
+                    are then combined together to calculate
+                    an overall score between 0 and 100 by finding the <a href="https://en.wikipedia.org/wiki/Euclidean_distance#Three_dimensions">
+                        distance</a> between
+                    the three subscores and a hypothetical perfect score of all 100s.
+                    This is the same approach used by <a href="http://www.charitynavigator.org/index.cfm?bay=content.view&cpid=1287">Charity Navigator</a>, but with three
+                    scores instead of two.  The final score is converted
+                    to a letter grade using the same approach typically used in academia.
+                  </p>
+                  <ul>
+                    <li>90-100: A</li>
+                    <li>80-89: B</li>
+                    <li>70-79: C</li>
+                    <li>60-69: D</li>
+                    <li>59 or less: D</li>
+                  </ul>
+
+                  <p>
+                    The <b> completeness </b> score looks simply at whether or
+                    not the organization has reported 10 basic types of data required
+                    to fully describe their activities. An organization starts with
+                    a perfect score of 100 and loses 1 point for each 10% of its
+                    activity records are missing that data point, up to 10 points per category.
+                    For example, if an organization is missing results on 50% of its records
+                    and budget data on 80% of them but has everything else complete, the score
+                    will be 100-5-8=87</p>
+
+                  <p>
+                    <b>Compliance</b> scores are based on how well the data reported
+                    by each organization matches patterns seen in real-world data.
+                    Data that appears fabricated or overly-rounded is less likely
+                    to be actually useful when making strategic decisions, so it's
+                    important to be able to identify these situations when they occur.
+                    We apply <a href="https://en.wikipedia.org/wiki/Benford%27s_law">
+                    Benford's Law</a> to the budget and transaction data listed by
+                    the organization.  We start with a score of 100, and
+                    subtract 25 points for each category that
+                    does follow Benford's law, and 30 points if no data is provided at all.
+                  </p>
+
+                  <p>
+                    <b>Utility</b> scores provide a sense for how practically useful
+                    an organization's data is likely to be.  Organizations with high utility
+                    scores provide a reasonable volume of information, enough to meaningfully
+                    represent their work, but not so much that it's overwhelming to the end user.
+                    Their records are internally consistent and provide a diverse mix of content
+                    rather than obscuring a short program description among a giant list of
+                    transactions that provide little practical additional information.
+                  </p>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+      </div>
+
+      <!-- IMPUTATION MODAL -->
+      <div id="imputeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="imputeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- MODAL HEADER -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="text-center"><br>Can I fill in gaps in this data?</h2>
+                </div>
+
+                <!-- MODAL BODY -->
+                <div class="modal-body row">
+                  <div class="col-md-10 col-md-offset-1">
+                    <p>
+                      In some situations where data is missing for an organization,
+                      AidSight may be able to suggest replacement datasets created by related
+                      organizations.  For example, if an organization has not reported
+                      any transaction information, it may be possible to use transaction
+                      data provided by a closely collaborating organization in place
+                      of the missing information. The amount and type of data that
+                      may be replaceable depends on both what kind of data is missing
+                      as well as the number of connected orgs (as seen on the graph search)
+                      and the specifics of the data that those connected orgs provide,
+                      where available.  As a baseline point of reference, about 20% of IATI organizations are candidates for this kind of data imputation.
+                    </p>
+
+                    <p>
+                      For <b>{{record.organization_name}}</b>, we are able to find
+                      <b>{{record.num_impute_options}}</b> opportunities for potentially replacing missing data.
+                      Any organization id shown contains a link to download raw activity data.
+                    </p>
+
+                    <ul>
+                    {% for dict_item in record.impute_options %}
+                          <li>{{dict_item.field}}:<a href={{dict_item.url}}>
+                          {{dict_item.replacement_organization_id}}</a> (Grade: <a href=/quality?org={{dict_item.replacement_organization_id}}>{{dict_item.grade}})</a> </li>
+                    {% endfor %}
+                </ul>
+
+
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
