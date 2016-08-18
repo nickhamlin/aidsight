@@ -13,7 +13,7 @@ Try it out yourself at [aidsight.org](http://www.aidsight.org)
 
 ## What's Here
 - *EDA* : All exploratory data analysis and data pipeline content required to process and compile the data used by the AidSight app
-- *App* : Contains actual code required to run the web app
+- *App* : Contains actual code required to run the web app 
 
 ## License
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
