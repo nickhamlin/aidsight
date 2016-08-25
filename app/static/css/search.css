@@ -50,10 +50,6 @@
   padding: 0px 8px 0px 8px;
 }
 
-#search-results td + td + td {
-  white-space: normal;
-}
-
 #search-results.filtered tr {
   display: none;
 }
@@ -82,10 +78,12 @@
 #search-graph-container .nodes circle {
   stroke-width: 1px;
   stroke: ghostwhite;
+  fill-opacity: 0.8;
 }
 
 #search-graph-container .nodes circle.highlighted {
-  stroke-width: 3px;
+  stroke-width: 4px;
+  fill-opacity: 1.0;
 }
 
 #search-results .publisher,
