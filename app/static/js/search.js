@@ -130,9 +130,6 @@ function highlightNode(nodeId) {
 		.enter().append("line")
 		.attr("stroke-width", function(d) { return d.size; });
 
-	var highlight = /[?&]highlight=([^&#]*)/i.exec(window.location.search);
-	var highlight_id = highlight ? highlight[1] : undefined;
-
 	var node = svg.append("g")
 		.attr("class", "nodes")
 		.selectAll("circle")
@@ -143,13 +140,7 @@ function highlightNode(nodeId) {
 			return 'node_' + d.id;
 		})
 		.attr("class", function(d) {
-			var classes = [d.type];
-
-			if (d.id == highlight_id) {
-				classes.push('highlighted');
-			}
-
-			return classes.join(' ');
+			return d.type;
 		})
 		.on("mouseover", function(d) {
 			tooltip.text(d.label).css('opacity', 0.9);
@@ -186,4 +177,10 @@ function highlightNode(nodeId) {
 
 	simulation.force("link")
 		.links(graph.edges);
+
+	var highlight = /[?&]highlight=([^&#]*)/i.exec(window.location.search);
+
+	if (highlight) {
+		highlightNode(highlight[1]);
+	}
 })();
