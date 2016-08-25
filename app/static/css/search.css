@@ -61,6 +61,10 @@
   line-height: 2em;
 }
 
+#search-results tr.selected a {
+  color: #93caf7;
+}
+
 #search-results tr.neighbor {
   background-color: #ddd;
 }
