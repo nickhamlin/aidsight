@@ -50,10 +50,6 @@
   padding: 0px 8px 0px 8px;
 }
 
-#search-results td + td + td {
-  white-space: normal;
-}
-
 #search-results.filtered tr {
   display: none;
 }
@@ -63,6 +59,15 @@
   border: 2px solid #000;
   color: #eee;
   line-height: 2em;
+}
+
+#search-results tr.selected a {
+  color: #93caf7;
+}
+
+#search-results tr.selected .participant,
+#search-results tr.selected .publisher {
+  color: #eee;
 }
 
 #search-results tr.neighbor {
@@ -82,10 +87,12 @@
 #search-graph-container .nodes circle {
   stroke-width: 1px;
   stroke: ghostwhite;
+  fill-opacity: 0.8;
 }
 
 #search-graph-container .nodes circle.highlighted {
-  stroke-width: 3px;
+  stroke-width: 4px;
+  fill-opacity: 1.0;
 }
 
 #search-results .publisher,
