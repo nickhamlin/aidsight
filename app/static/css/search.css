@@ -65,6 +65,11 @@
   color: #93caf7;
 }
 
+#search-results tr.selected .participant,
+#search-results tr.selected .publisher {
+  color: #eee;
+}
+
 #search-results tr.neighbor {
   background-color: #ddd;
 }
