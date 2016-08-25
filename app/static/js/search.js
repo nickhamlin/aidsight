@@ -38,7 +38,9 @@ function highlightNode(nodeId) {
 
 	// From http://stackoverflow.com/questions/12508225/how-do-we-update-url-or-query-strings-using-javascript-jquery-without-reloading
 
-	var highlightURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?highlight=' + nodeId;
+	var highlightURL = window.location.protocol + "//" + window.location.host + window.location.pathname +
+		'?query=' + escape(jQuery('#query').val()) + '&highlight=' + escape(nodeId);
+
     window.history.pushState({path:highlightURL},'',highlightURL);
 
 	return true;
