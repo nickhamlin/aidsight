@@ -25,8 +25,15 @@ sudo -H pip install boto numpy pandas pymongo flask flask_wtf
 
 ### Clone the repo
 ~~~~
+cd ~
+git clone https://github.com/nickhamlin/aidsight.git
+
 cd /var/www
-sudo git clone https://github.com/nickhamlin/mids_capstone.git
+sudo mkdir -p aidsight
+sudo chown ubuntu:ubuntu aidsight
+
+cd aidsight
+ln -s /home/ubuntu/aidsight/app
 ~~~~
 
 ### Start the Server
@@ -36,7 +43,7 @@ then restart everything fresh.
 sudo cp app/aidsight.conf /etc/apache2/sites-available/aidsight.conf
 sudo a2dissite 000-default.conf
 sudo a2ensite aidsight.conf
-sudo /etc/init.d/apache2 restart
+sudo service apache2 restart
 ~~~~
 
 Once this is done, enter the instance's public DNS name into a browser to see the site!
