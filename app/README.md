@@ -1,8 +1,8 @@
 # Deploying the site to EC2
 
 ### Provision your EC2 instance
-I used a single m3.large spot instance (hourly rate about $0.03) and the spot-instance
-friendly Ubuntu Server 14.04 AMI (ami-fce3c696 ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-20160114.5)
+I used a single m1.large spot instance (hourly rate about $0.03) and the spot-instance
+friendly Ubuntu Server 16.04 AMI (ubuntu/images/ebs-ssd/ubuntu-xenial-16.04-amd64-server-20160907.1)
 
 Make sure that your security group allows SSH access on port 22 and HTTP access on port 80
 You can set up this security group once and recycle it for any future instances.
@@ -17,10 +17,10 @@ Once you've SSHed in, just run the following commands in order.
 ### Install stuff
 ~~~~
 sudo apt-get update
-sudo apt-get install apache2 libapache2-mod-wsgi
-sudo apt-get install git
-sudo apt-get install python-pip
-sudo -H pip install boto numpy pandas pymongo flask flask_wtf
+sudo apt-get install -y apache2 libapache2-mod-wsgi
+sudo apt-get install -y git
+sudo apt-get install -y python-pip
+sudo -H pip install boto numpy pandas pymongo flask flask_wtf requests
 ~~~~
 
 ### Clone the repo
