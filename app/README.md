@@ -1,5 +1,17 @@
 # Deploying the site to EC2
 
+### Install Jupyter
+
+### Install MongoDB
+Run the notebook on the EC2 instance:
+
+* eda/w210-install-mongodb.ipynb
+
+### Load Data into MongoDB
+Run the notebook on the EC2 instance:
+
+* w210-load-data-from-backup-mongodb.ipynb
+
 ### Provision your EC2 instance
 I used a single m1.large spot instance (hourly rate about $0.03) and the spot-instance
 friendly Ubuntu Server 16.04 AMI (ubuntu/images/ebs-ssd/ubuntu-xenial-16.04-amd64-server-20160907.1)
